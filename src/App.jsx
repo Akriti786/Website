@@ -18,25 +18,19 @@ import Register from './pages/Register';
 import Dashboard from './pages/Dashboard';
 
 export default function App() {
+  /** createBrowserRouter lives right here in App.jsx */
   const router = createBrowserRouter(
     createRoutesFromElements(
       <Route element={<Layout />}>
-        {/* Public pages */}
+        {/* public pages */}
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
+        <Route path="/services" element={<Services />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
 
-        {/* Protected pages */}
-        <Route
-          path="/services"
-          element={
-            <PrivateRoute>
-              <Services />
-            </PrivateRoute>
-          }
-        />
+        {/* protected page */}
         <Route
           path="/dashboard"
           element={
@@ -46,7 +40,7 @@ export default function App() {
           }
         />
 
-        {/* Fallback */}
+        {/* fallback */}
         <Route path="*" element={<Login />} />
       </Route>
     )
